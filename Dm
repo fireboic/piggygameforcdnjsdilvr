@@ -1,222 +1,276 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1920 1080">
-  <foreignObject width="100%" height="100%">
-    <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml" style="width:100%; height:100%;">
-      <![CDATA[
-      <!DOCTYPE html>
-      <html lang="en">
-      <head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>AURAMATH — Advanced Calculus &amp; Tutoring</title>
-          <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-          <style>
-              :root {
-                  --b1: #070913; --b2: #0d1224; --c1: #131b31; --a1: #00f0ff; --a2: #ff007f; --t1: #f8fafc; --t2: #94a3b8; --bd: #1e293b;
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%" style="background-color: #070913;">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap');
+      
+      text { font-family: 'Inter', sans-serif; user-select: none; }
+      .orb { font-family: 'Orbitron', sans-serif; }
+      
+      .btn { cursor: pointer; transition: opacity 0.2s; }
+      .btn:hover { opacity: 0.8; }
+      .btn:active { opacity: 0.6; }
+      
+      .s-btn { cursor: pointer; }
+      .s-btn:hover rect { fill: rgba(0, 240, 255, 0.1); stroke: #00f0ff; }
+      .s-btn.act rect { fill: rgba(0, 240, 255, 0.25); stroke: #00f0ff; }
+      
+      iframe { border: none; width: 100%; height: 100%; }
+    </style>
+    <linearGradient id="grad-title" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f0ff" />
+      <stop offset="100%" stop-color="#ff007f" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background Particle Canvas Layer -->
+  <g id="particle-group" opacity="0.3"></g>
+
+  <!-- MATH PORTAL (DEFAULT VIEW) -->
+  <g id="math-portal" visibility="visible">
+    <!-- Header -->
+    <rect x="0" y="0" width="1920" height="80" fill="#1e293b" />
+    <text x="40" y="50" fill="#ffffff" font-size="24" font-weight="700" class="orb">AURAMATH Tutoring — Calculus &amp; Advanced Analysis</text>
+    <text x="1880" y="50" fill="#94a3b8" font-size="16" text-anchor="end">Student Portal v4.2</text>
+    
+    <!-- Main Content Background -->
+    <rect x="0" y="80" width="1920" height="1000" fill="#ffffff" />
+    
+    <!-- Left Column: Curriculum -->
+    <rect x="40" y="120" width="1180" height="400" rx="12" fill="#0f172a" />
+    <text x="630" y="300" fill="#ffffff" font-size="28" font-weight="600" text-anchor="middle">📹 Lecture 12: Limits &amp; Derivative Proofs</text>
+    <text x="630" y="340" fill="#94a3b8" font-size="16" text-anchor="middle">Watch the concept overview before attempting the problem set.</text>
+    
+    <text x="40" y="570" fill="#0f172a" font-size="28" font-weight="700">Curriculum Overview</text>
+    <text x="40" y="610" fill="#475569" font-size="18">Welcome to AURAMATH. Our adaptive curriculum covers everything from arithmetic foundations to single-variable</text>
+    <text x="40" y="640" fill="#475569" font-size="18">calculus, differential equations, and linear algebra. Use the calculation tools on the right to verify your analytical solutions.</text>
+
+    <!-- Right Column: Scientific Calculator Container -->
+    <rect x="1260" y="120" width="620" height="700" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2" />
+    <text x="1290" y="160" fill="#1e293b" font-size="20" font-weight="600">Scientific Calculator</text>
+    
+    <!-- Screen Display -->
+    <rect x="1290" y="180" width="560" height="80" rx="8" fill="#0f172a" />
+    <text id="calc-display" x="1830" y="233" fill="#38bdf8" font-size="36" font-weight="700" text-anchor="end" class="orb">0</text>
+    
+    <!-- Buttons Grid -->
+    <!-- Row 1 -->
+    <g class="btn" onclick="window._0x_cl()"><rect x="1290" y="280" width="125" height="70" rx="8" fill="#fecdd3" /><text x="1352" y="323" fill="#be123c" font-size="22" font-weight="700" text-anchor="middle">C</text></g>
+    <g class="btn" onclick="window._0x_ap('(')"><rect x="1435" y="280" width="125" height="70" rx="8" fill="#bae6fd" /><text x="1497" y="323" fill="#0369a1" font-size="22" font-weight="700" text-anchor="middle">(</text></g>
+    <g class="btn" onclick="window._0x_ap(')')"><rect x="1580" y="280" width="125" height="70" rx="8" fill="#bae6fd" /><text x="1642" y="323" fill="#0369a1" font-size="22" font-weight="700" text-anchor="middle">)</text></g>
+    <g class="btn" onclick="window._0x_ap('/')"><rect x="1725" y="280" width="125" height="70" rx="8" fill="#bae6fd" /><text x="1787" y="323" fill="#0369a1" font-size="22" font-weight="700" text-anchor="middle">÷</text></g>
+    
+    <!-- Row 2 -->
+    <g class="btn" onclick="window._0x_ap('7')"><rect x="1290" y="370" width="125" height="70" rx="8" fill="#e2e8f0" /><text x="1352" y="413" fill="#0f172a" font-size="22" font-weight="600" text-anchor="middle">7</text></g>
+    <g class="btn" onclick="window._0x_ap('8')"><rect x="1435" y="370" width="125" height="70" rx="8" fill="#e2e8f0" /><text x="1497" y="413" fill="#0f172a" font-size="22" font-weight="600" text-anchor="middle">8</text></g>
+    <g class="btn" onclick="window._0x_ap('9')"><rect x="1580" y="370" width="125" height="70" rx="8" fill="#e2e8f0" /><text x="1642" y="413" fill="#0f172a" font-size="22" font-weight="600" text-anchor="middle">9</text></g>
+    <g class="btn" onclick="window._0x_ap('*')"><rect x="1725" y="370" width="125" height="70" rx="8" fill="#bae6fd" /><text x="1787" y="413" fill="#0369a1" font-size="22" font-weight="700" text-anchor="middle">×</text></g>
+    
+    <!-- Row 3 -->
+    <g class="btn" onclick="window._0x_ap('4')"><rect x="1290" y="460" width="125" height="70" rx="8" fill="#e2e8f0" /><text x="1352" y="503" fill="#0f172a" font-size="22" font-weight="600" text-anchor="middle">4</text></g>
+    <g class="btn" onclick="window._0x_ap('5')"><rect x="1435" y="460" width="125" height="70" rx="8" fill="#e2e8f0" /><text x="1497" y="503" fill="#0f172a" font-size="22" font-weight="600" text-anchor="middle">5</text></g>
+    <g class="btn" onclick="window._0x_ap('6')"><rect x="1580" y="460" width="125" height="70" rx="8" fill="#e2e8f0" /><text x="1642" y="503" fill="#0f172a" font-size="22" font-weight="600" text-anchor="middle">6</text></g>
+    <g class="btn" onclick="window._0x_ap('-')"><rect x="1725" y="460" width="125" height="70" rx="8" fill="#bae6fd" /><text x="1787" y="503" fill="#0369a1" font-size="22" font-weight="700" text-anchor="middle">-</text></g>
+    
+    <!-- Row 4 -->
+    <g class="btn" onclick="window._0x_ap('1')"><rect x="1290" y="550" width="125" height="70" rx="8" fill="#e2e8f0" /><text x="1352" y="593" fill="#0f172a" font-size="22" font-weight="600" text-anchor="middle">1</text></g>
+    <g class="btn" onclick="window._0x_ap('2')"><rect x="1435" y="550" width="125" height="70" rx="8" fill="#e2e8f0" /><text x="1497" y="593" fill="#0f172a" font-size="22" font-weight="600" text-anchor="middle">2</text></g>
+    <g class="btn" onclick="window._0x_ap('3')"><rect x="1580" y="550" width="125" height="70" rx="8" fill="#e2e8f0" /><text x="1642" y="593" fill="#0f172a" font-size="22" font-weight="600" text-anchor="middle">3</text></g>
+    <g class="btn" onclick="window._0x_ap('+')"><rect x="1725" y="550" width="125" height="70" rx="8" fill="#bae6fd" /><text x="1787" y="593" fill="#0369a1" font-size="22" font-weight="700" text-anchor="middle">+</text></g>
+    
+    <!-- Row 5 -->
+    <g class="btn" onclick="window._0x_ap('0')"><rect x="1290" y="640" width="125" height="70" rx="8" fill="#e2e8f0" /><text x="1352" y="683" fill="#0f172a" font-size="22" font-weight="600" text-anchor="middle">0</text></g>
+    <g class="btn" onclick="window._0x_ap('.')"><rect x="1435" y="640" width="125" height="70" rx="8" fill="#e2e8f0" /><text x="1497" y="683" fill="#0f172a" font-size="22" font-weight="600" text-anchor="middle">.</text></g>
+    <g class="btn" onclick="window._0x_ev()"><rect x="1580" y="640" width="270" height="70" rx="8" fill="#0ea5e9" /><text x="1715" y="683" fill="#ffffff" font-size="24" font-weight="700" text-anchor="middle">=</text></g>
+  </g>
+
+  <!-- PROXY DASHBOARD (UNLOCKED VIEW) -->
+  <g id="proxy-dashboard" visibility="hidden">
+    <!-- Sidebar -->
+    <rect x="0" y="0" width="340" height="1080" fill="#0d1224" stroke="#00f0ff" stroke-width="2" />
+    
+    <!-- Sidebar Header -->
+    <rect x="0" y="0" width="340" height="80" fill="#131b31" />
+    <text x="20" y="48" fill="url(#grad-title)" font-size="22" font-weight="800" class="orb">AURAFULL</text>
+    
+    <!-- Lock / Return Button -->
+    <g class="btn" onclick="window._0x_sM()">
+      <rect x="200" y="25" width="120" height="32" rx="6" fill="rgba(255,255,255,0.1)" stroke="#00f0ff" stroke-width="1" />
+      <text x="260" y="46" fill="#00f0ff" font-size="12" font-weight="600" text-anchor="middle">🔒 Lock / Math</text>
+    </g>
+    
+    <!-- Dynamic Server List Container -->
+    <g id="sidebar-list-group"></g>
+    
+    <!-- Main Viewport Header -->
+    <rect x="340" y="0" width="1580" height="60" fill="#0d1224" />
+    <line x1="340" y1="60" x2="1920" y2="60" stroke="#1e293b" stroke-width="1" />
+    <text id="active-node-label" x="360" y="36" fill="#00f0ff" font-size="16" class="orb">Active Node: None</text>
+    
+    <!-- Viewport Area (Rendered via SVG frame insertion on server selection) -->
+    <rect x="340" y="60" width="1580" height="1020" fill="#111111" />
+  </g>
+
+  <!-- Embedded Application Logic -->
+  <script type="text/javascript">
+    <![CDATA[
+      (function() {
+          let _0xc = "0";
+          const _0xs = document.getElementById('calc-display');
+          const _0xu = () => { _0xs.textContent = _0xc; };
+          
+          window._0x_ap = (v) => { 
+              _0xc = (_0xc === "0" && v !== '.') ? v : _0xc + v; 
+              _0xu(); 
+          };
+          
+          window._0x_cl = () => { 
+              _0xc = "0"; 
+              _0xu(); 
+          };
+          
+          window._0x_ev = () => {
+              if (_0xc.trim() === String(0x1a71)) { // Code 6769
+                  document.getElementById('math-portal').setAttribute('visibility', 'hidden');
+                  document.getElementById('proxy-dashboard').setAttribute('visibility', 'visible');
+                  window._0x_cl(); 
+                  return;
               }
-              * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
-              body { background-color: var(--b1); color: var(--t1); height: 100vh; overflow: hidden; display: flex; flex-direction: column; }
-              
-              .b_c { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 0; opacity: 0.25; }
-              
-              #_mP { position: relative; z-index: 10; width: 100vw; height: 100vh; background: #fff; color: #1f2937; display: flex; flex-direction: column; overflow-y: auto; }
-              .m_h { background: #1e293b; color: #fff; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; }
-              .m_c { display: flex; flex: 1; padding: 40px; gap: 40px; max-width: 1300px; margin: 0 auto; width: 100%; }
-              .m_m { flex: 2; } .m_s { flex: 1; display: flex; flex-direction: column; gap: 20px; }
-              .v_p { width: 100%; height: 350px; background: #0f172a; border-radius: 12px; display: flex; flex-direction: column; justify-content: center; align-items: center; color: #fff; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-              .c_w { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
-              .c_s { background: #0f172a; color: #38bdf8; font-family: 'Orbitron', monospace; font-size: 1.8rem; text-align: right; padding: 15px; border-radius: 8px; margin-bottom: 15px; letter-spacing: 2px; min-height: 60px; word-break: break-all; }
-              .c_g { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-              .c_b { background: #e2e8f0; border: none; padding: 15px; font-size: 1.1rem; font-weight: 600; border-radius: 8px; cursor: pointer; transition: background 0.15s, transform 0.1s; }
-              .c_b:hover { background: #cbd5e1; } .c_b:active { transform: scale(0.95); }
-              .c_b.o { background: #bae6fd; color: #0369a1; } .c_b.a { background: #fecdd3; color: #be123c; } .c_b.e { background: #0ea5e9; color: white; grid-column: span 2; }
-              
-              #_pD { position: relative; z-index: 10; display: none; width: 100vw; height: 100vh; flex-direction: row; }
-              sidebar { width: 340px; background-color: rgba(13, 18, 36, 0.95); backdrop-filter: blur(10px); border-right: 2px solid var(--a1); display: flex; flex-direction: column; height: 100%; box-shadow: 5px 0 25px rgba(0, 240, 255, 0.1); }
-              .s_h { padding: 20px; background: linear-gradient(90deg, rgba(0,240,255,0.1), rgba(255,0,127,0.1)); border-bottom: 1px solid var(--bd); display: flex; justify-content: space-between; align-items: center; }
-              .s_h h2 { font-family: 'Orbitron', sans-serif; font-size: 1.1rem; letter-spacing: 1px; background: linear-gradient(45deg, var(--a1), var(--a2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-              .r_b { background: rgba(255,255,255,0.1); border: 1px solid var(--a1); color: var(--a1); padding: 6px 12px; border-radius: 6px; font-size: 0.75rem; cursor: pointer; font-weight: 600; transition: all 0.2s; }
-              .r_b:hover { background: var(--a1); color: #000; }
-              .s_l { overflow-y: auto; flex: 1; padding: 12px; }
-              .c_t { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--a2); padding: 12px 8px 6px 8px; margin-top: 8px; font-weight: 700; }
-              .s_btn { display: flex; flex-direction: column; width: 100%; padding: 10px 14px; margin-bottom: 5px; background: var(--c1); border: 1px solid var(--bd); border-radius: 8px; color: var(--t1); text-align: left; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
-              .s_btn:hover { border-color: var(--a1); transform: translateX(4px); background: rgba(0, 240, 255, 0.05); }
-              .s_btn.act { border-color: var(--a1); background: linear-gradient(135deg, rgba(0,240,255,0.2), rgba(255,0,127,0.1)); box-shadow: 0 0 15px rgba(0, 240, 255, 0.2); }
-              .s_n { font-family: 'Orbitron', sans-serif; font-size: 0.85rem; font-weight: 600; color: var(--a1); letter-spacing: 0.5px; }
-              .s_c { font-size: 0.75rem; color: var(--t2); margin-top: 2px; }
-              
-              main { flex: 1; display: flex; flex-direction: column; height: 100%; background: #000; }
-              main:fullscreen { width: 100vw; height: 100vh; background: #000; }
-              .t_b { height: 55px; background-color: var(--b2); border-bottom: 1px solid var(--bd); display: flex; align-items: center; justify-content: space-between; padding: 0 20px; }
-              .t_t { font-family: 'Orbitron', sans-serif; font-size: 0.9rem; color: var(--a1); }
-              .v_c { flex: 1; position: relative; background: #111; }
-              iframe { width: 100%; height: 100%; border: none; }
-              .f_n { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none; flex-direction: column; justify-content: center; align-items: center; background: rgba(7, 9, 19, 0.95); color: var(--t2); text-align: center; padding: 30px; }
-              .f_n a { color: var(--a1); margin-top: 15px; font-weight: 600; text-decoration: none; border: 1px solid var(--a1); padding: 8px 16px; border-radius: 6px; transition: background 0.2s; }
-              .f_n a:hover { background: var(--a1); color: #000; }
-          </style>
-      </head>
-      <body>
-          <canvas class="b_c" id="_cvs"></canvas>
+              try {
+                  let _0x_s = _0xc.replace(/\u00D7/g, '*').replace(/\u00F7/g, '/');
+                  _0xc = String(Function('"use strict";return (' + _0x_s + ')')());
+              } catch (e) { 
+                  _0xc = "Error"; 
+              }
+              _0xu(); 
+              setTimeout(() => { if(_0xc === "Error") window._0x_cl(); }, 1500);
+          };
+          
+          window._0x_sM = () => {
+              document.getElementById('proxy-dashboard').setAttribute('visibility', 'hidden');
+              document.getElementById('math-portal').setAttribute('visibility', 'visible');
+          };
 
-          <div id="_mP">
-              <header class="m_h">
-                  <h1>AURAMATH Tutoring — Calculus &amp; Advanced Analysis</h1>
-                  <span style="font-size: 0.9rem; opacity: 0.8;">Student Portal v4.2</span>
-              </header>
-              <div class="m_c">
-                  <div class="m_m">
-                      <div class="v_p">
-                          <h3>📹 Lecture 12: Limits &amp; Derivative Proofs</h3>
-                          <p style="color: var(--t2); font-size: 0.9rem;">Watch the concept overview before attempting the problem set.</p>
-                      </div>
-                      <div style="margin-top: 30px;">
-                          <h2 style="margin-bottom: 10px; color: #0f172a;">Curriculum Overview</h2>
-                          <p style="color: #475569; line-height: 1.6;">Welcome to AURAMATH. Our adaptive curriculum covers everything from arithmetic foundations to single-variable calculus, differential equations, and linear algebra. Use the calculation tools on the right to verify your analytical solutions.</p>
-                      </div>
-                  </div>
-                  <div class="m_s">
-                      <div class="c_w">
-                          <h4 style="margin-bottom: 12px; color: #1e293b; font-size: 0.95rem;">Scientific Calculator</h4>
-                          <div class="c_s" id="_cS">0</div>
-                          <div class="c_g">
-                              <button class="c_b a" onclick="window._0x_cl()">C</button>
-                              <button class="c_b o" onclick="window._0x_ap('(')">(</button>
-                              <button class="c_b o" onclick="window._0x_ap(')')">)</button>
-                              <button class="c_b o" onclick="window._0x_ap('/')">÷</button>
-                              <button class="c_b" onclick="window._0x_ap('7')">7</button>
-                              <button class="c_b" onclick="window._0x_ap('8')">8</button>
-                              <button class="c_b" onclick="window._0x_ap('9')">9</button>
-                              <button class="c_b o" onclick="window._0x_ap('*')">×</button>
-                              <button class="c_b" onclick="window._0x_ap('4')">4</button>
-                              <button class="c_b" onclick="window._0x_ap('5')">5</button>
-                              <button class="c_b" onclick="window._0x_ap('6')">6</button>
-                              <button class="c_b o" onclick="window._0x_ap('-')">-</button>
-                              <button class="c_b" onclick="window._0x_ap('1')">1</button>
-                              <button class="c_b" onclick="window._0x_ap('2')">2</button>
-                              <button class="c_b" onclick="window._0x_ap('3')">3</button>
-                              <button class="c_b o" onclick="window._0x_ap('+')">+</button>
-                              <button class="c_b" onclick="window._0x_ap('0')">0</button>
-                              <button class="c_b" onclick="window._0x_ap('.')">.</button>
-                              <button class="c_b e" onclick="window._0x_ev()">=</button>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
+          const _0xCt = ["AWS S3 Core","Bull-33 Grid","Opium Matrix","Rosin Gateway","Nebula Gateway","UngTung Node","DaydreamX","Kite Browser","Interstellar","DogeUb & Utopia","Voya & Aurora","SolaraOS","Triple T & Space","Lunar & Study Hub","Tung & Stroberri","Quizizz Vault","Math Learning Cloud"];
+          const _0xDt = [
+              [0, "Sigma S3 Alpha", "aHR0cHM6Ly9zMy5hbWF6b25hd3MuY29tL2dmZGQvaW5kZXguaHRtbA=="],[0, "Sigma S3 Beta", "aHR0cHM6Ly9zMy51cy1lYXN0LTEuYW1hem9uYXdzLmNvbS9nZmRkL2luZGV4Lmh0bWw="],[0, "Sigma S3 Gamma", "aHR0cHM6Ly9nZmRkLnMzLmFtYXpvbmF3cy5jb20vaW5kZXguaHRtbA=="],[0, "Sigma S3 Delta", "aHR0cHM6Ly9nZmRkLnMzLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tL2luZGV4Lmh0bWw="],[0, "Sigma S3 Epsilon", "aHR0cHM6Ly9zMy5kdWFsc3RhY2sudXMtZWFzdC0xLmFtYXpvbmF3cy5jb20vZ2ZkZC9pbmRleC5odG1s"],[0, "Sigma S3 Zeta", "aHR0cHM6Ly9nZmRkLnMzLmR1YWxzdGFjay51cy1lYXN0LTEuYW1hem9uYXdzLmNvbS9pbmRleC5odG1s"],[0, "Rizzler S3 Alpha", "aHR0cHM6Ly9zMy5hbWF6b25hd3MuY29tL2prbmIvaW5kZXguaHRtbA=="],[0, "Rizzler S3 Beta", "aHR0cHM6Ly9zMy51cy1lYXN0LTEuYW1hem9uYXdzLmNvbS9qa25iL2luZGV4Lmh0bWw="],[0, "Rizzler S3 Gamma", "aHR0cHM6Ly9qa25iLnMzLmFtYXpvbmF3cy5jb20vaW5kZXguaHRtbA=="],[0, "Rizzler S3 Delta", "aHR0cHM6Ly9qa25iLnMzLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tL2luZGV4Lmh0bWw="],[0, "Rizzler S3 Epsilon", "aHR0cHM6Ly9zMy5kdWFsc3RhY2sudXMtZWFzdC0xLmFtYXpvbmF3cy5jb20vamtuYi9pbmRleC5odG1s"],[0, "Rizzler S3 Zeta", "aHR0cHM6Ly9qa25iLnMzLmR1YWxzdGFjay51cy1lYXN0LTEuYW1hem9uYXdzLmNvbS9pbmRleC5odG1s"],[0, "Fanum S3 Alpha", "aHR0cHM6Ly9zMy5hbWF6b25hd3MuY29tL2ZoeWQvaW5kZXguaHRtbA=="],[0, "Fanum S3 Beta", "aHR0cHM6Ly9zMy51cy1lYXN0LTEuYW1hem9uYXdzLmNvbS9maHlkL2luZGV4Lmh0bWw="],[0, "Fanum S3 Gamma", "aHR0cHM6Ly9maHlkLnMzLmFtYXpvbmF3cy5jb20vaW5kZXguaHRtbA=="],[0, "Fanum S3 Delta", "aHR0cHM6Ly9maHlkLnMzLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tL2luZGV4Lmh0bWw="],[0, "Fanum S3 Epsilon", "aHR0cHM6Ly9zMy5kdWFsc3RhY2sudXMtZWFzdC0xLmFtYXpvbmF3cy5jb20vZmh5ZC9pbmRleC5odG1s"],[0, "Fanum S3 Zeta", "aHR0cHM6Ly9maHlkLnMzLmR1YWxzdGFjay51cy1lYXN0LTEuYW1hem9uYXdzLmNvbS9pbmRleC5odG1s"],
+              [1, "Gyatt Bull Alpha", "aHR0cHM6Ly9zMy5hbWF6b25hd3MuY29tL2poZHMvaW5kZXguaHRtbA=="],[1, "Gyatt Bull Beta", "aHR0cHM6Ly9zMy51cy1lYXN0LTEuYW1hem9uYXdzLmNvbS/qaGRzL2luZGV4Lmh0bWw="],[1, "Gyatt Bull Gamma", "aHR0cHM6Ly9qaGRzLnMzLmFtYXpvbmF3cy5jb20vaW5kZXguaHRtbA=="],[1, "Gyatt Bull Delta", "aHR0cHM6Ly9qaGRzLnMzLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tL2luZGV4Lmh0bWw="],[1, "Gyatt Bull Epsilon", "aHR0cHM6Ly9zMy5kdWFsc3RhY2sudXMtZWFzdC0xLmFtYXpvbmF3cy5jb20vamhdcy9pbmRleC5odG1s"],[1, "Gyatt Bull Zeta", "aHR0cHM6Ly9qaGRzLnMzLmR1YWxzdGFjay51cy1lYXN0LTEuYW1hem9uYXdzLmNvbS9pbmRleC5odG1s"],[1, "Mewing Bull Alpha", "aHR0cHM6Ly9zMy5hbWF6b25hd3MuY29tL2tsZGgvaW5kZXguaHRtbA=="],[1, "Mewing Bull Beta", "aHR0cHM6Ly9zMy51cy1lYXN0LTEuYW1hem9uYXdzLmNvbS9rbGRoL2luZGV4Lmh0bWw="],[1, "Mewing Bull Gamma", "aHR0cHM6Ly9rbGRoLnMzLmFtYXpvbmF3cy5jb20vaW5kZXguaHRtbA=="],[1, "Mewing Bull Delta", "aHR0cHM6Ly9rbGRoLnMzLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tL2luZGV4Lmh0bWw="],[1, "Mewing Bull Epsilon", "aHR0cHM6Ly9zMy5kdWFsc3RhY2sudXMtZWFzdC0xLmFtYXpvbmF3cy5jb20va2xkaC9pbmRleC5odG1s"],[1, "Mewing Bull Zeta", "aHR0cHM6Ly9rbGRoLnMzLmR1YWxzdGFjay51cy1lYXN0LTEuYW1hem9uYXdzLmNvbS9pbmRleC5odG1s"],[1, "Skibidi Bull Alpha", "aHR0cHM6Ly9zMy5hbWF6b25hd3MuY29tL3J0bm0vaW5kZXguaHRtbA=="],[1, "Skibidi Bull Beta", "aHR0cHM6Ly9zMy51cy1lYXN0LTEuYW1hem9uYXdzLmNvbS9ydG5tL2luZGV4Lmh0bWw="],[1, "Skibidi Bull Gamma", "aHR0cHM6Ly9ydG5tLnMzLmFtYXpvbmF3cy5jb20vaW5kZXguaHRtbA=="],[1, "Skibidi Bull Delta", "aHR0cHM6Ly9ydG5tLnMzLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tL2luZGV4Lmh0bWw="],[1, "Skibidi Bull Epsilon", "aHR0cHM6Ly9zMy5kdWFsc3RhY2sudXMtZWFzdC0xLmFtYXpvbmF3cy5jb20vcnRubS9pbmRleC5odG1s"],[1, "Skibidi Bull Zeta", "aHR0cHM6Ly9ydG5tLnMzLmR1YWxzdGFjay51cy1lYXN0LTEuYW1hem9uYXdzLmNvbS9ydG5tL2luZGV4Lmh0bWw="],
+              [2, "Grimace SVG Alpha", "aHR0cHM6Ly9jZG4uanNkZWxpdjIubmV0L2doL29waXVtYmVzdC9idWxsMzMvaW5kZXguc3Zn"],[2, "Grimace SVG Beta", "aHR0cHM6Ly9yYXcuZXNtLnNoL2doL09waXVtQmVzdC9idWxsMzMvaW5kZXguc3Zn"],[2, "Grimace SVG Gamma", "aHR0cHM6Ly9jZG4uc3RhdGljYWxseS5pby9naC9PcGl1bUJlc3QvYnVsbDMzQG1haW4vaW5kZXguc3Zn"],[2, "Opium Bull Core", "aHR0cHM6Ly9zMy5hbWF6b25hd3MuY29tL29waXVtYnVsbC9pbmRleC5odG1s"],[2, "Google Cloud Opium", "aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL29waXVtYnVsbC9pbmRleC5odG1s"],
+              [3, "Scott Baptist Node", "aHR0cHM6Ly9vbmVtb3JlYnVsbC5zY290dGJhcHRpc3QuY29t"],[3, "Herbs Image Node", "aHR0cHM6Ly9zYW5idWxsLmhlcmJzYnlub3J0aGRheXNpbWFnZS5jYQ=="],[3, "VipFilm Node", "aHR0cHM6Ly92aXBmaWxtMjEucnBzLw=="],[3, "Ujqepnvo Node", "aHR0cHM6Ly91anFlcG52by5jZmQv"],[3, "The Guide Node", "aHR0cHM6Ly90aGVndWlkZS5jeW91Lw=="],[3, "The Fashion Node", "aHR0cHM6Ly90aGVmYXNoaW9uLmJlYXV0eS8="],[3, "Synthroid Node", "aHR0cHM6Ly9zeW50aHJvaWQucGljcy8="],[3, "Swepcraft Node", "aHR0cHM6Ly9zd2VwY3JhZnQuc2JzLw=="],[3, "Springwater Node", "aHR0cHM6Ly9zcHJpbmd3YXRlcmJhcHRpc3Qub3JnLw=="],
+              [4, "Bijay Tamang Node", "aHR0cHM6Ly9idWxsLmVkdWNhdGlvbi5kcmJpamF5dGFtYW5nLmNvbS5ucA=="],[4, "Drswright Node", "aHR0cHM6Ly9idWxsdeS5kcnN3cmlnaHQuY2E="],[4, "Noble House Node", "aHR0cDovL2J1bGwuaGFzLm5vLm5vYmxlLWhvdXNlLnRr"],[4, "Pound4Pound Node", "aHR0cDovLzY3bWF0aHMucG91bmQ0cG91bmRtbWEuY2E="],[4, "Rigaprecast Node", "aHR0cHM6Ly9sYXR2aWFuLWJ1bGwucmlnYXByZWNhc3QuY29tLmF1"],[4, "Scott Baptist Alt", "aHR0cHM6Ly9tYXliZWJ1bGwuc2NvdHRiYXB0aXN0LmNvbQ=="],[4, "Voice Exchange Node", "aHR0cHM6Ly9saWtlLnN1YnNjcmliZS50aGV2b2ljZWV4Y2hhbmdlLmNvbQ=="],
+              [5, "UngTung S3 Alpha", "aHR0cHM6Ly9vdzlicGViLnMzLmFtYXpvbmF3cy5jb20vaW5kZXguaHRtbA=="],[5, "UngTung S3 Beta", "aHR0cHM6Ly9vdzlicGViLnMzLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tL2luZGV4Lmh0bWw="],[5, "UngTung S3 Gamma", "aHR0cHM6Ly9zMy5hbWF6b25hd3MuY29tL293OWJwZWIvaW5kZXguaHRtbA=="],[5, "UngTung S3 Delta", "aHR0cHM6Ly9zMy51cy1lYXN0LTEuYW1hem9uYXdzLmNvbS9vdzlicGViL2luZGV4Lmh0bWw="],
+              [6, "DaydreamX Alpha", "aHR0cHM6Ly9qMnpwLnMzLmFtYXpvbmF3cy5jb20vaW5kZXguaHRtbA=="],[6, "DaydreamX Beta", "aHR0cHM6Ly9zMy5hbWF6b25hd3MuY29tL2oyenAvaW5kZXguaHRtbA=="],
+              [7, "Studypad S3 Alpha", "aHR0cHM6Ly9zdHVkeXBhZGFwcC5zMy5hbWF6b25hd3MuY29tL2luZGV4Lmh0bWw="],[7, "Studypad S3 Beta", "aHR0cHM6Ly9zMy5hbWF6b25hd3MuY29tL3N0dWR5cGFkYXBwL2luZGV4Lmh0bWw="],[7, "Lessonpad S3 Alpha", "aHR0cHM6Ly9sZXNNvbnBhZHdlYiuczMy5hbWF6b25hd3MuY29tL2luZGV4Lmh0bWw="],[7, "Lessonpad S3 Beta", "aHR0cHM6Ly9zMy5hbWF6b25hd3MuY29tL2xlc3NvbnBhZHdlYi9pbmRleC5odG1s"],
+              [8, "TBGN S3 Alpha", "aHR0cHM6Ly90YmduLnMzLmFtYXpvbmF3cy5jb20vaW5kZXguaHRtbA=="],[8, "TBGN S3 Beta", "aHR0cHM6Ly90YmduLnMzLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tL2luZGV4Lmh0bWw="],[8, "TBGN S3 Gamma", "aHR0cHM6Ly9zMy5hbWF6b25hd3MuY29tL3RiZ24vaW5kZXguaHRtbA=="],
+              [9, "S3EF Alpha", "aHR0cHM6Ly9zM2VmLnMzLmFtYXpvbmF3cy5jb20vaW5kZXguaHRtbA=="],[9, "S3EF Beta", "aHR0cHM6Ly9zMy5hbWF6b25hd3MuY29tL3MzZWYvaW5kZXguaHRtbA=="],[9, "S3EF External", "aHR0cHM6Ly9zMy1leHRlcm5hbC0xLmFtYXpvbmF3cy5jb20vczNlZi9pbmRleC5odG1s"],[9, "WCFG Alpha", "aHR0cHM6Ly93Y2ZnLnMzLmFtYXpvbmF3cy5jb20vaW5kZXguaHRtbA=="],[9, "WCFG Beta", "aHR0cHM6Ly9zMy5hbWF6b25hd3MuY29tL3djZmcvaW5kZXguaHRtbA=="],[9, "Utopia Smartbateria", "aHR0cHM6Ly91dG9waWEuc21hcnRiYXRlcmlhLnBs"],[9, "Utopia Poolstrade", "aHR0cHM6Ly91dG9waWEucG9vbHN0cmFkZS5jb20="],
+              [10, "Voya Katagis", "aHR0cHM6Ly92b3lhb2suanova2F0YWdpcy5ldQ=="],[10, "Voya Brucehickey", "aHR0cHM6Ly92b3lhb2suYnJ1Y2VoaWNrZXkuY29t"],[10, "Aurora Katagis", "aHR0cHM6Ly9hbi5qei1rYXRhZ2lzLmV1"],[10, "Aurora Brucehickey", "aHR0cHM6Ly9hYi5icnVjZWhpY2tleS5jb20="],[10, "Cinera Brucehickey", "aHR0cHM6Ly9pbi5icnVjZWhpY2tleS5jb20="],[10, "Cinera Katagis", "aHR0cHM6Ly9pbi5qei1rYXRhZ2lzLmV1"],
+              [11, "Solara Katagis", "aHR0cHM6Ly9vcy5qei1rYXRhZ2lzLmV1"],[11, "Solara Brucehickey", "aHR0cHM6Ly9vcy5icnVjZWhpY2tleS5jb20="],
+              [12, "Triple T HD Katagis", "aHR0cHM6Ly90aGQuanova2F0YWdpcy5ldQ=="],[12, "Triple T HD Brucehickey", "aHR0cHM6Ly90aGQuYnJ1Y2VoaWNrZXkuY29t"],[12, "Space Brucehickey", "aHR0cHM6Ly9zcC5icnVjZWhpY2tleS5jb20="],[12, "Space Componentsearch", "aHR0cHM6Ly9zcC5jb21wb25lbnRzZWFyY2guY29t"],[12, "Utopia Alt Katagis", "aHR0cHM6Ly91dC5qei1rYXRhZ2lzLmV1"],[12, "Utopia Alt Brucehickey", "aHR0cHM6Ly91dC5icnVjZWhpY2tleS5jb20="],
+              [13, "Lunar Katagis", "aHR0cHM6Ly9sdW5hcm9rLanova2F0YWdpcy5ldQ=="],[13, "Lunar Brucehickey", "aHR0cHM6Ly9sdW5hcm9rLmJydWNlaGlja2V5LmNvbQ=="],[13, "Study Hub Brucehickey", "aHR0cHM6Ly9zaHVib2suYnJ1Y2VoaWNrZXkuY29t"],[13, "Study Hub Katagis", "aHR0cHM6Ly9zaHVib2suanova2F0YWdpcy5ldQ=="],
+              [14, "Tung Katagis", "aHR0cHM6Ly90dW5nb2suanova2F0YWdpcy5ldQ=="],[14, "Tung Brucehickey", "aHR0cHM6Ly90dW5nb2suYnJ1Y2VoaWNrZXkuY29t"],[14, "Stroberri Katagis", "aHR0cHM6Ly9zdHJvYmVycmlva2Uuanota2F0YWdpcy5ldQ=="],[14, "Stroberri Brucehickey", "aHR0cHM6Ly9zdHJvYmVycmlvay5icnVjZWhpY2tleS5jb20="],
+              [15, "Quizizz Media 1", "aHR0cHM6Ly9xdWl6aXp6LXN0YXRpYy5zMy5hbWF6b25hd3MuY29tL19tZWRpYS91cGxvYWRlZEZpbGVzLzAxMzk1NWJkLWI1Y2ItNDJkNS04NjU1LWEwOWMyOTBhNDAzMy12Mg=="],[15, "Quizizz Media 2", "aHR0cHM6Ly9xdWl6aXp6LXN0YXRpYy5zMy5hbWF6b25hd3MuY29tL19tZWRpYS91cGxvYWRlZEZpbGVzLzkxYTE0MDhkLTY3ZmMtNGJiMC1iZGQwLTNlNDQ3YzVlNWI5Mi12Mg=="],[15, "Quizizz Media 3", "aHR0cHM6Ly9xdWl6aXp6LXN0YXRpYy5zMy5hbWF6b25hd3MuY29tL19tZWRpYS91cGxvYWRlZEZpbGVzLzM1OTNlYjg0LWYwNWYtNDZiZi05NmQ2LTlhNDRmNzBkMTExNC12Mg=="],[15, "Quizizz Accelerate 1", "aHR0cHM6Ly9xdWl6aXp6LXN0YXRpYy5zMy1hY2NlbGVyYXRlLmFtYXpvbmF3cy5jb20vX21lZGlhL3VwbG9hZGVkRmlsZXMvMDEzOTU1YmQtYjVjYi00MmQ1LTg2NTUtYTA5YzI5MGE0MDMzLXYy"],[15, "Quizizz Accelerate 2", "aHR0cHM6Ly9xdWl6aXp6LXN0YXRpYy5zMy1hY2NlbGVyYXRlLmFtYXpvbmF3cy5jb20vX21lZGlhL3VwbG9hZGVkRmlsZXMvOTFhMTQwOGQtNjdmY000YmIwLWJkZDAtM2U0NDdjNWU1YjkyLXYy"],
+              [16, "Math Node 1", "aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL21hdGhsZWFybmluZy9idWxsLTMzL2duLW1hdGhfMTAvZ24tbWF0aA=="],[16, "Math Node 2", "aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL21hdGhsZWFybmluZy9idWxsLTMzL2duLW1hdGhfMTEvZ24tbWF0aA=="],[16, "Math Node 3", "aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL21hdGhsZWFybmluZy9idWxsLTMzL2duLW1hdGhfMTIvZ24tbWF0aA=="],[16, "Math Node 4", "aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL21hdGhsZWFybmluZy9idWxsLTMzL2duLW1hdGhfMTMvZ24tbWF0aA=="],[16, "Math Node 5", "aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL21hdGhsZWFybmluZy9idWxsLTMzL2duLW1hdGhfMTQvZ24tbWF0aA=="],[16, "Math Node 6", "aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL21hdGhsZWFybmluZy9idWxsLTMzL2duLW1hdGhfMTUvZ24tbWF0aA=="],[16, "Math Node 7", "aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL21hdGhsZWFybmluZy9idWxsLTMzL2duLW1hdGhfNC9nbi1tYXRo"],[16, "Math Node 8", "aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL21hdGhsZWFybmluZy9idWxsLTMzL2duLW1hdGhfNS9nbi1tYXRo"],[16, "Math Node 9", "aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL21hdGhsZWFybmluZy9idWxsLTMzL2duLW1hdGhfNi9nbi1tYXRo"],[16, "Math Node 10", "aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL21hdGhsZWFybmluZy9idWxsLTMzL2duLW1hdGhfMjgvZ24tbWF0aA=="]
+          ];
 
-          <div id="_pD">
-              <sidebar>
-                  <div class="s_h">
-                      <h2>AURAFULL</h2>
-                      <button class="r_b" onclick="window._0x_sM()">🔒 Lock / Math</button>
-                  </div>
-                  <div class="s_l" id="_sL"></div>
-              </sidebar>
-              <main id="_mn">
-                  <div class="t_b">
-                      <span class="t_t" id="_aL">Active Node: None</span>
-                      <div style="display: flex; gap: 10px;">
-                          <button class="r_b" id="_fsBtn" onclick="window._0x_tF()">⛶ Fullscreen</button>
-                      </div>
-                  </div>
-                  <div class="v_c">
-                      <iframe id="_sF" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
-                      <div id="_fN" class="f_n">
-                          <p>⚠️ Direct embedding restricted by target server headers.</p>
-                          <a id="_eL" href="#" target="_blank">Launch in Secure External Tab ↗</a>
-                      </div>
-                  </div>
-              </main>
-          </div>
+          // Build SVG Sidebar Server List
+          const listGroup = document.getElementById('sidebar-list-group');
+          let currentCategory = '';
+          let yOffset = 100;
 
-          <script>
-              (function(_0xd, _0xw) {
-                  let _0xc = "0"; const _0xs = _0xd.getElementById('_cS');
-                  const _0xu = () => { _0xs.innerText = _0xc; };
-                  _0xw._0x_ap = (v) => { _0xc = (_0xc === "0" &amp;&amp; v !== '.') ? v : _0xc + v; _0xu(); };
-                  _0xw._0x_cl = () => { _0xc = "0"; _0xu(); };
-                  _0xw._0x_ev = () => {
-                      if (_0xc.trim() === String(0x1a71)) {
-                          _0xd.getElementById('_mP').style.display = 'none';
-                          _0xd.getElementById('_pD').style.display = 'flex';
-                          _0xw._0x_cl(); return;
-                      }
-                      try {
-                          let _0x_s = _0xc.replace(/\u00D7/g, '*').replace(/\u00F7/g, '/');
-                          _0xc = String(Function('"use strict";return (' + _0x_s + ')')());
-                      } catch (e) { _0xc = "Error"; }
-                      _0xu(); setTimeout(() => { if(_0xc === "Error") _0xw._0x_cl(); }, 1500);
-                  };
-                  _0xw._0x_sM = () => {
-                      _0xd.getElementById('_pD').style.display = 'none';
-                      _0xd.getElementById('_mP').style.display = 'flex';
-                      if (_0xd.fullscreenElement) _0xd.exitFullscreen().catch(()=>{});
-                  };
-                  _0xw._0x_tF = () => {
-                      const _0xm = _0xd.getElementById('_mn');
-                      if (!_0xd.fullscreenElement) _0xm.requestFullscreen().catch(()=>{});
-                      else _0xd.exitFullscreen().catch(()=>{});
-                  };
-                  _0xd.addEventListener('fullscreenchange', () => {
-                      _0xd.getElementById('_fsBtn').innerText = _0xd.fullscreenElement ? "⛶ Exit Fullscreen" : "⛶ Fullscreen";
-                  });
+          _0xDt.forEach((item, idx) => {
+              const catTitle = _0xCt[item[0]];
+              if (catTitle !== currentCategory) {
+                  currentCategory = catTitle;
+                  const catText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                  catText.setAttribute('x', '20');
+                  catText.setAttribute('y', yOffset);
+                  catText.setAttribute('fill', '#ff007f');
+                  catText.setAttribute('font-size', '10');
+                  catText.setAttribute('font-weight', '700');
+                  catText.setAttribute('letter-spacing', '1.5');
+                  catText.textContent = currentCategory.toUpperCase();
+                  listGroup.appendChild(catText);
+                  yOffset += 20;
+              }
 
-                  const _0xCt = ["AWS S3 Core","Bull-33 Grid","Opium Matrix","Rosin Gateway","Nebula Gateway","UngTung Node","DaydreamX","Kite Browser","Interstellar","DogeUb &amp; Utopia","Voya &amp; Aurora","SolaraOS","Triple T &amp; Space","Lunar &amp; Study Hub","Tung &amp; Stroberri","Quizizz Vault","Math Learning Cloud"];
-                  const _0xDt = [
-                      [0, "Sigma S3 Alpha", "aHR0cHM6Ly9zMy5hbWF6b25hd3MuY29tL2dmZGQvaW5kZXguaHRtbA=="],[0, "Sigma S3 Beta", "aHR0cHM6Ly9zMy51cy1lYXN0LTEuYW1hem9uYXdzLmNvbS9nZmRkL2luZGV4Lmh0bWw="],[0, "Sigma S3 Gamma", "aHR0cHM6Ly9nZmRkLnMzLmFtYXpvbmF3cy5jb20vaW5kZXguaHRtbA=="],[0, "Sigma S3 Delta", "aHR0cHM6Ly9nZmRkLnMzLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tL2luZGV4Lmh0bWw="],[0, "Sigma S3 Epsilon", "aHR0cHM6Ly9zMy5kdWFsc3RhY2sudXMtZWFzdC0xLmFtYXpvbmF3cy5jb20vZ2ZkZC9pbmRleC5odG1s"],[0, "Sigma S3 Zeta", "aHR0cHM6Ly9nZmRkLnMzLmR1YWxzdGFjay51cy1lYXN0LTEuYW1hem9uYXdzLmNvbS9pbmRleC5odG1s"],[0, "Rizzler S3 Alpha", "aHR0cHM6Ly9zMy5hbWF6b25hd3MuY29tL2prbmIvaW5kZXguaHRtbA=="],[0, "Rizzler S3 Beta", "aHR0cHM6Ly9zMy51cy1lYXN0LTEuYW1hem9uYXdzLmNvbS9qa25iL2luZGV4Lmh0bWw="],[0, "Rizzler S3 Gamma", "aHR0cHM6Ly9qa25iLnMzLmFtYXpvbmF3cy5jb20vaW5kZXguaHRtbA=="],[0, "Rizzler S3 Delta", "aHR0cHM6Ly9qa25iLnMzLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tL2luZGV4Lmh0bWw="],[0, "Rizzler S3 Epsilon", "aHR0cHM6Ly9zMy5kdWFsc3RhY2sudXMtZWFzdC0xLmFtYXpvbmF3cy5jb20vamtuYi9pbmRleC5odG1s"],[0, "Rizzler S3 Zeta", "aHR0cHM6Ly9qa25iLnMzLmR1YWxzdGFjay51cy1lYXN0LTEuYW1hem9uYXdzLmNvbS9pbmRleC5odG1s"],[0, "Fanum S3 Alpha", "aHR0cHM6Ly9zMy5hbWF6b25hd3MuY29tL2ZoeWQvaW5kZXguaHRtbA=="],[0, "Fanum S3 Beta", "aHR0cHM6Ly9zMy51cy1lYXN0LTEuYW1hem9uYXdzLmNvbS9maHlkL2luZGV4Lmh0bWw="],[0, "Fanum S3 Gamma", "aHR0cHM6Ly9maHlkLnMzLmFtYXpvbmF3cy5jb20vaW5kZXguaHRtbA=="],[0, "Fanum S3 Delta", "aHR0cHM6Ly9maHlkLnMzLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tL2luZGV4Lmh0bWw="],[0, "Fanum S3 Epsilon", "aHR0cHM6Ly9zMy5kdWFsc3RhY2sudXMtZWFzdC0xLmFtYXpvbmF3cy5jb20vZmh5ZC9pbmRleC5odG1s"],[0, "Fanum S3 Zeta", "aHR0cHM6Ly9maHlkLnMzLmR1YWxzdGFjay51cy1lYXN0LTEuYW1hem9uYXdzLmNvbS9pbmRleC5odG1s"],
-                      [1, "Gyatt Bull Alpha", "aHR0cHM6Ly9zMy5hbWF6b25hd3MuY29tL2poZHMvaW5kZXguaHRtbA=="],[1, "Gyatt Bull Beta", "aHR0cHM6Ly9zMy51cy1lYXN0LTEuYW1hem9uYXdzLmNvbS/qaGRzL2luZGV4Lmh0bWw="],[1, "Gyatt Bull Gamma", "aHR0cHM6Ly9qaGRzLnMzLmFtYXpvbmF3cy5jb20vaW5kZXguaHRtbA=="],[1, "Gyatt Bull Delta", "aHR0cHM6Ly9qaGRzLnMzLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tL2luZGV4Lmh0bWw="],[1, "Gyatt Bull Epsilon", "aHR0cHM6Ly9zMy5kdWFsc3RhY2sudXMtZWFzdC0xLmFtYXpvbmF3cy5jb20vamhdcy9pbmRleC5odG1s"],[1, "Gyatt Bull Zeta", "aHR0cHM6Ly9qaGRzLnMzLmR1YWxzdGFjay51cy1lYXN0LTEuYW1hem9uYXdzLmNvbS9pbmRleC5odG1s"],[1, "Mewing Bull Alpha", "aHR0cHM6Ly9zMy5hbWF6b25hd3MuY29tL2tsZGgvaW5kZXguaHRtbA=="],[1, "Mewing Bull Beta", "aHR0cHM6Ly9zMy51cy1lYXN0LTEuYW1hem9uYXdzLmNvbS9rbGRoL2luZGV4Lmh0bWw="],[1, "Mewing Bull Gamma", "aHR0cHM6Ly9rbGRoLnMzLmFtYXpvbmF3cy5jb20vaW5kZXguaHRtbA=="],[1, "Mewing Bull Delta", "aHR0cHM6Ly9rbGRoLnMzLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tL2luZGV4Lmh0bWw="],[1, "Mewing Bull Epsilon", "aHR0cHM6Ly9zMy5kdWFsc3RhY2sudXMtZWFzdC0xLmFtYXpvbmF3cy5jb20va2xkaC9pbmRleC5odG1s"],[1, "Mewing Bull Zeta", "aHR0cHM6Ly9rbGRoLnMzLmR1YWxzdGFjay51cy1lYXN0LTEuYW1hem9uYXdzLmNvbS9pbmRleC5odG1s"],[1, "Skibidi Bull Alpha", "aHR0cHM6Ly9zMy5hbWF6b25hd3MuY29tL3J0bm0vaW5kZXguaHRtbA=="],[1, "Skibidi Bull Beta", "aHR0cHM6Ly9zMy51cy1lYXN0LTEuYW1hem9uYXdzLmNvbS9ydG5tL2luZGV4Lmh0bWw="],[1, "Skibidi Bull Gamma", "aHR0cHM6Ly9ydG5tLnMzLmFtYXpvbmF3cy5jb20vaW5kZXguaHRtbA=="],[1, "Skibidi Bull Delta", "aHR0cHM6Ly9ydG5tLnMzLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tL2luZGV4Lmh0bWw="],[1, "Skibidi Bull Epsilon", "aHR0cHM6Ly9zMy5kdWFsc3RhY2sudXMtZWFzdC0xLmFtYXpvbmF3cy5jb20vcnRubS9pbmRleC5odG1s"],[1, "Skibidi Bull Zeta", "aHR0cHM6Ly9ydG5tLnMzLmR1YWxzdGFjay51cy1lYXN0LTEuYW1hem9uYXdzLmNvbS9ydG5tL2luZGV4Lmh0bWw="],
-                      [2, "Grimace SVG Alpha", "aHR0cHM6Ly9jZG4uanNkZWxpdjIubmV0L2doL29waXVtYmVzdC9idWxsMzMvaW5kZXguc3Zn"],[2, "Grimace SVG Beta", "aHR0cHM6Ly9yYXcuZXNtLnNoL2doL09waXVtQmVzdC9idWxsMzMvaW5kZXguc3Zn"],[2, "Grimace SVG Gamma", "aHR0cHM6Ly9jZG4uc3RhdGljYWxseS5pby9naC9PcGl1bUJlc3QvYnVsbDMzQG1haW4vaW5kZXguc3Zn"],[2, "Opium Bull Core", "aHR0cHM6Ly9zMy5hbWF6b25hd3MuY29tL29waXVtYnVsbC9pbmRleC5odG1s"],[2, "Google Cloud Opium", "aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL29waXVtYnVsbC9pbmRleC5odG1s"],
-                      [3, "Scott Baptist Node", "aHR0cHM6Ly9vbmVtb3JlYnVsbC5zY290dGJhcHRpc3QuY29t"],[3, "Herbs Image Node", "aHR0cHM6Ly9zYW5idWxsLmhlcmJzYnlub3J0aGRheXNpbWFnZS5jYQ=="],[3, "VipFilm Node", "aHR0cHM6Ly92aXBmaWxtMjEucnBzLw=="],[3, "Ujqepnvo Node", "aHR0cHM6Ly91anFlcG52by5jZmQv"],[3, "The Guide Node", "aHR0cHM6Ly90aGVndWlkZS5jeW91Lw=="],[3, "The Fashion Node", "aHR0cHM6Ly90aGVmYXNoaW9uLmJlYXV0eS8="],[3, "Synthroid Node", "aHR0cHM6Ly9zeW50aHJvaWQucGljcy8="],[3, "Swepcraft Node", "aHR0cHM6Ly9zd2VwY3JhZnQuc2JzLw=="],[3, "Springwater Node", "aHR0cHM6Ly9zcHJpbmd3YXRlcmJhcHRpc3Qub3JnLw=="],
-                      [4, "Bijay Tamang Node", "aHR0cHM6Ly9idWxsLmVkdWNhdGlvbi5kcmJpamF5dGFtYW5nLmNvbS5ucA=="],[4, "Drswright Node", "aHR0cHM6Ly9idWxsdeS5kcnN3cmlnaHQuY2E="],[4, "Noble House Node", "aHR0cDovL2J1bGwuaGFzLm5vLm5vYmxlLWhvdXNlLnRr"],[4, "Pound4Pound Node", "aHR0cDovLzY3bWF0aHMucG91bmQ0cG91bmRtbWEuY2E="],[4, "Rigaprecast Node", "aHR0cHM6Ly9sYXR2aWFuLWJ1bGwucmlnYXByZWNhc3QuY29tLmF1"],[4, "Scott Baptist Alt", "aHR0cHM6Ly9tYXliZWJ1bGwuc2NvdHRiYXB0aXN0LmNvbQ=="],[4, "Voice Exchange Node", "aHR0cHM6Ly9saWtlLnN1YnNjcmliZS50aGV2b2ljZWV4Y2hhbmdlLmNvbQ=="],
-                      [5, "UngTung S3 Alpha", "aHR0cHM6Ly9vdzlicGViLnMzLmFtYXpvbmF3cy5jb20vaW5kZXguaHRtbA=="],[5, "UngTung S3 Beta", "aHR0cHM6Ly9vdzlicGViLnMzLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tL2luZGV4Lmh0bWw="],[5, "UngTung S3 Gamma", "aHR0cHM6Ly9zMy5hbWF6b25hd3MuY29tL293OWJwZWIvaW5kZXguaHRtbA=="],[5, "UngTung S3 Delta", "aHR0cHM6Ly9zMy51cy1lYXN0LTEuYW1hem9uYXdzLmNvbS9vdzlicGViL2luZGV4Lmh0bWw="],
-                      [6, "DaydreamX Alpha", "aHR0cHM6Ly9qMnpwLnMzLmFtYXpvbmF3cy5jb20vaW5kZXguaHRtbA=="],[6, "DaydreamX Beta", "aHR0cHM6Ly9zMy5hbWF6b25hd3MuY29tL2oyenAvaW5kZXguaHRtbA=="],
-                      [7, "Studypad S3 Alpha", "aHR0cHM6Ly9zdHVkeXBhZGFwcC5zMy5hbWF6b25hd3MuY29tL2luZGV4Lmh0bWw="],[7, "Studypad S3 Beta", "aHR0cHM6Ly9zMy5hbWF6b25hd3MuY29tL3N0dWR5cGFkYXBwL2luZGV4Lmh0bWw="],[7, "Lessonpad S3 Alpha", "aHR0cHM6Ly9sZXNNvbnBhZHdlYiuczMy5hbWF6b25hd3MuY29tL2luZGV4Lmh0bWw="],[7, "Lessonpad S3 Beta", "aHR0cHM6Ly9zMy5hbWF6b25hd3MuY29tL2xlc3NvbnBhZHdlYi9pbmRleC5odG1s"],
-                      [8, "TBGN S3 Alpha", "aHR0cHM6Ly90YmduLnMzLmFtYXpvbmF3cy5jb20vaW5kZXguaHRtbA=="],[8, "TBGN S3 Beta", "aHR0cHM6Ly90YmduLnMzLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tL2luZGV4Lmh0bWw="],[8, "TBGN S3 Gamma", "aHR0cHM6Ly9zMy5hbWF6b25hd3MuY29tL3RiZ24vaW5kZXguaHRtbA=="],
-                      [9, "S3EF Alpha", "aHR0cHM6Ly9zM2VmLnMzLmFtYXpvbmF3cy5jb20vaW5kZXguaHRtbA=="],[9, "S3EF Beta", "aHR0cHM6Ly9zMy5hbWF6b25hd3MuY29tL3MzZWYvaW5kZXguaHRtbA=="],[9, "S3EF External", "aHR0cHM6Ly9zMy1leHRlcm5hbC0xLmFtYXpvbmF3cy5jb20vczNlZi9pbmRleC5odG1s"],[9, "WCFG Alpha", "aHR0cHM6Ly93Y2ZnLnMzLmFtYXpvbmF3cy5jb20vaW5kZXguaHRtbA=="],[9, "WCFG Beta", "aHR0cHM6Ly9zMy5hbWF6b25hd3MuY29tL3djZmcvaW5kZXguaHRtbA=="],[9, "Utopia Smartbateria", "aHR0cHM6Ly91dG9waWEuc21hcnRiYXRlcmlhLnBs"],[9, "Utopia Poolstrade", "aHR0cHM6Ly91dG9waWEucG9vbHN0cmFkZS5jb20="],
-                      [10, "Voya Katagis", "aHR0cHM6Ly92b3lhb2suanova2F0YWdpcy5ldQ=="],[10, "Voya Brucehickey", "aHR0cHM6Ly92b3lhb2suYnJ1Y2VoaWNrZXkuY29t"],[10, "Aurora Katagis", "aHR0cHM6Ly9hbi5qei1rYXRhZ2lzLmV1"],[10, "Aurora Brucehickey", "aHR0cHM6Ly9hYi5icnVjZWhpY2tleS5jb20="],[10, "Cinera Brucehickey", "aHR0cHM6Ly9pbi5icnVjZWhpY2tleS5jb20="],[10, "Cinera Katagis", "aHR0cHM6Ly9pbi5qei1rYXRhZ2lzLmV1"],
-                      [11, "Solara Katagis", "aHR0cHM6Ly9vcy5qei1rYXRhZ2lzLmV1"],[11, "Solara Brucehickey", "aHR0cHM6Ly9vcy5icnVjZWhpY2tleS5jb20="],
-                      [12, "Triple T HD Katagis", "aHR0cHM6Ly90aGQuanova2F0YWdpcy5ldQ=="],[12, "Triple T HD Brucehickey", "aHR0cHM6Ly90aGQuYnJ1Y2VoaWNrZXkuY29t"],[12, "Space Brucehickey", "aHR0cHM6Ly9zcC5icnVjZWhpY2tleS5jb20="],[12, "Space Componentsearch", "aHR0cHM6Ly9zcC5jb21wb25lbnRzZWFyY2guY29t"],[12, "Utopia Alt Katagis", "aHR0cHM6Ly91dC5qei1rYXRhZ2lzLmV1"],[12, "Utopia Alt Brucehickey", "aHR0cHM6Ly91dC5icnVjZWhpY2tleS5jb20="],
-                      [13, "Lunar Katagis", "aHR0cHM6Ly9sdW5hcm9rLanova2F0YWdpcy5ldQ=="],[13, "Lunar Brucehickey", "aHR0cHM6Ly9sdW5hcm9rLmJydWNlaGlja2V5LmNvbQ=="],[13, "Study Hub Brucehickey", "aHR0cHM6Ly9zaHVib2suYnJ1Y2VoaWNrZXkuY29t"],[13, "Study Hub Katagis", "aHR0cHM6Ly9zaHVib2suanova2F0YWdpcy5ldQ=="],
-                      [14, "Tung Katagis", "aHR0cHM6Ly90dW5nb2suanova2F0YWdpcy5ldQ=="],[14, "Tung Brucehickey", "aHR0cHM6Ly90dW5nb2suYnJ1Y2VoaWNrZXkuY29t"],[14, "Stroberri Katagis", "aHR0cHM6Ly9zdHJvYmVycmlva2Uuanota2F0YWdpcy5ldQ=="],[14, "Stroberri Brucehickey", "aHR0cHM6Ly9zdHJvYmVycmlvay5icnVjZWhpY2tleS5jb20="],
-                      [15, "Quizizz Media 1", "aHR0cHM6Ly9xdWl6aXp6LXN0YXRpYy5zMy5hbWF6b25hd3MuY29tL19tZWRpYS91cGxvYWRlZEZpbGVzLzAxMzk1NWJkLWI1Y2ItNDJkNS04NjU1LWEwOWMyOTBhNDAzMy12Mg=="],[15, "Quizizz Media 2", "aHR0cHM6Ly9xdWl6aXp6LXN0YXRpYy5zMy5hbWF6b25hd3MuY29tL19tZWRpYS91cGxvYWRlZEZpbGVzLzkxYTE0MDhkLTY3ZmMtNGJiMC1iZGQwLTNlNDQ3YzVlNWI5Mi12Mg=="],[15, "Quizizz Media 3", "aHR0cHM6Ly9xdWl6aXp6LXN0YXRpYy5zMy5hbWF6b25hd3MuY29tL19tZWRpYS91cGxvYWRlZEZpbGVzLzM1OTNlYjg0LWYwNWYtNDZiZi05NmQ2LTlhNDRmNzBkMTExNC12Mg=="],[15, "Quizizz Accelerate 1", "aHR0cHM6Ly9xdWl6aXp6LXN0YXRpYy5zMy1hY2NlbGVyYXRlLmFtYXpvbmF3cy5jb20vX21lZGlhL3VwbG9hZGVkRmlsZXMvMDEzOTU1YmQtYjVjYi00MmQ1LTg2NTUtYTA5YzI5MGE0MDMzLXYy"],[15, "Quizizz Accelerate 2", "aHR0cHM6Ly9xdWl6aXp6LXN0YXRpYy5zMy1hY2NlbGVyYXRlLmFtYXpvbmF3cy5jb20vX21lZGlhL3VwbG9hZGVkRmlsZXMvOTFhMTQwOGQtNjdmY000YmIwLWJkZDAtM2U0NDdjNWU1YjkyLXYy"],
-                      [16, "Math Node 1", "aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL21hdGhsZWFybmluZy9idWxsLTMzL2duLW1hdGhfMTAvZ24tbWF0aA=="],[16, "Math Node 2", "aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL21hdGhsZWFybmluZy9idWxsLTMzL2duLW1hdGhfMTEvZ24tbWF0aA=="],[16, "Math Node 3", "aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL21hdGhsZWFybmluZy9idWxsLTMzL2duLW1hdGhfMTIvZ24tbWF0aA=="],[16, "Math Node 4", "aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL21hdGhsZWFybmluZy9idWxsLTMzL2duLW1hdGhfMTMvZ24tbWF0aA=="],[16, "Math Node 5", "aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL21hdGhsZWFybmluZy9idWxsLTMzL2duLW1hdGhfMTQvZ24tbWF0aA=="],[16, "Math Node 6", "aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL21hdGhsZWFybmluZy9idWxsLTMzL2duLW1hdGhfMTUvZ24tbWF0aA=="],[16, "Math Node 7", "aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL21hdGhsZWFybmluZy9idWxsLTMzL2duLW1hdGhfNC9nbi1tYXRo"],[16, "Math Node 8", "aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL21hdGhsZWFybmluZy9idWxsLTMzL2duLW1hdGhfNS9nbi1tYXRo"],[16, "Math Node 9", "aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL21hdGhsZWFybmluZy9idWxsLTMzL2duLW1hdGhfNi9nbi1tYXRo"],[16, "Math Node 10", "aHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL21hdGhsZWFybmluZy9idWxsLTMzL2duLW1hdGhfMjgvZ24tbWF0aA=="]
-                  ];
+              const btnG = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+              btnG.setAttribute('class', 's-btn');
+              
+              const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+              rect.setAttribute('x', '15');
+              rect.setAttribute('y', yOffset);
+              rect.setAttribute('width', '310');
+              rect.setAttribute('height', '45');
+              rect.setAttribute('rx', '6');
+              rect.setAttribute('fill', '#131b31');
+              rect.setAttribute('stroke', '#1e293b');
+              rect.setAttribute('stroke-width', '1');
+
+              const text1 = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+              text1.setAttribute('x', '28');
+              text1.setAttribute('y', yOffset + 20);
+              text1.setAttribute('fill', '#00f0ff');
+              text1.setAttribute('font-size', '12');
+              text1.setAttribute('font-weight', '600');
+              text1.setAttribute('class', 'orb');
+              text1.textContent = `Server ${idx + 1}`;
+
+              const text2 = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+              text2.setAttribute('x', '28');
+              text2.setAttribute('y', yOffset + 36);
+              text2.setAttribute('fill', '#94a3b8');
+              text2.setAttribute('font-size', '11');
+              text2.textContent = item[1];
+
+              btnG.appendChild(rect);
+              btnG.appendChild(text1);
+              btnG.appendChild(text2);
+
+              btnG.onclick = () => {
+                  document.querySelectorAll('.s-btn').forEach(b => b.classList.remove('act'));
+                  btnG.classList.add('act');
+                  document.getElementById('active-node-label').textContent = `Active: Server ${idx + 1} (${item[1]})`;
                   
-                  let _0xcC = '', _0xlC = _0xd.getElementById('_sL');
-                  _0xDt.forEach((i, x) => {
-                      const cT = _0xCt[i[0]];
-                      if (cT !== _0xcC) {
-                          _0xcC = cT; const h = _0xd.createElement('div'); h.className = 'c_t'; h.innerText = _0xcC; _0xlC.appendChild(h);
-                      }
-                      const b = _0xd.createElement('button'); b.className = 's_btn';
-                      b.innerHTML = `<span class="s_n">Server ${x + 1}</span><span class="s_c">${i[1]}</span>`;
-                      b.onclick = () => {
-                          _0xd.querySelectorAll('.s_btn').forEach(k => k.classList.remove('act'));
-                          b.classList.add('act'); _0xd.getElementById('_aL').innerText = `Active: Server ${x + 1} (${i[1]})`;
-                          let u = _0xw['\x61\x74\x6f\x62'](i[2]); if (!u.startsWith('http')) u = 'https://' + u;
-                          _0xd.getElementById('_sF').src = u; _0xd.getElementById('_eL').href = u; _0xd.getElementById('_fN').style.display = 'none';
-                      };
-                      _0xlC.appendChild(b); if (x === 0) b.click();
-                  });
-                  _0xd.getElementById('_sF').onerror = () => _0xd.getElementById('_fN').style.display = 'flex';
+                  let u = atob(item[2]); 
+                  if (!u.startsWith('http')) u = 'https://' + u;
+                  window.open(u, '_blank');
+              };
 
-                  const _0xcv = _0xd.getElementById('_cvs'), _0xctx = _0xcv.getContext('2d');
-                  const _0xrs = () => { _0xcv.width = _0xw.innerWidth; _0xcv.height = _0xw.innerHeight; };
-                  _0xw.addEventListener('resize', _0xrs); _0xrs();
-                  const _0xpt = [];
-                  for (let j = 0; j < 40; j++) _0xpt.push({x: Math.random()*_0xcv.width, y: Math.random()*_0xcv.height, vx: (Math.random()-0.5)*0.8, vy: (Math.random()-0.5)*0.8, r: Math.random()*2+1, c: Math.random()>0.5?'#00f0ff':'#ff007f'});
-                  const _0xani = () => {
-                      _0xctx.clearRect(0, 0, _0xcv.width, _0xcv.height);
-                      _0xpt.forEach(p => { p.x += p.vx; p.y += p.vy; if (p.x < 0 || p.x > _0xcv.width) p.vx *= -1; if (p.y < 0 || p.y > _0xcv.height) p.vy *= -1;
-                      _0xctx.beginPath(); _0xctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); _0xctx.fillStyle = p.c; _0xctx.shadowBlur = 10; _0xctx.shadowColor = p.c; _0xctx.fill(); });
-                      requestAnimationFrame(_0xani);
-                  };
-                  _0xani();
-              })(document, window);
-          </script>
-      </body>
-      </html>
-      ]]>
-    </xhtml:div>
-  </foreignObject>
+              listGroup.appendChild(btnG);
+              yOffset += 52;
+          });
+
+          // SVG Particle System
+          const pGroup = document.getElementById('particle-group');
+          const particles = [];
+          for (let i = 0; i < 35; i++) {
+              const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+              const p = {
+                  el: circle,
+                  x: Math.random() * 1920,
+                  y: Math.random() * 1080,
+                  vx: (Math.random() - 0.5) * 1.2,
+                  vy: (Math.random() - 0.5) * 1.2,
+                  r: Math.random() * 2.5 + 1
+              };
+              circle.setAttribute('r', p.r);
+              circle.setAttribute('fill', i % 2 === 0 ? '#00f0ff' : '#ff007f');
+              pGroup.appendChild(circle);
+              particles.push(p);
+          }
+
+          function animate() {
+              particles.forEach(p => {
+                  p.x += p.vx;
+                  p.y += p.vy;
+                  if (p.x < 0 || p.x > 1920) p.vx *= -1;
+                  if (p.y < 0 || p.y > 1080) p.vy *= -1;
+                  p.el.setAttribute('cx', p.x);
+                  p.el.setAttribute('cy', p.y);
+              });
+              requestAnimationFrame(animate);
+          }
+          animate();
+      })();
+    ]]>
+  </script>
 </svg>
