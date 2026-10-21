@@ -1,0 +1,474 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xhtml="http://www.w3.org/1999/xhtml" width="100%" height="100%" viewBox="0 0 1280 800" preserveAspectRatio="none">
+  <foreignObject width="100%" height="100%">
+    <xhtml:div id="svg-root" style="width:100%; height:100%;">
+      <![CDATA[
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>MathPath — Advanced Calculus & Tutoring</title>
+          <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+          <style>
+              :root {
+                  --b1: #05070e;
+                  --b2: #0b101f;
+                  --c1: #111827;
+                  --a1: #00f0ff;
+                  --a2: #ff007f;
+                  --t1: #f8fafc;
+                  --t2: #94a3b8;
+                  --bd: #1e293b;
+              }
+              
+              * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+              body, html { width: 100%; height: 100%; background-color: var(--b1); color: var(--t1); overflow: hidden; }
+              
+              /* Matrix Background Canvas */
+              .b_c { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 0; opacity: 0.3; }
+              
+              /* Math Portal Decoy Mode */
+              #_mP { position: relative; z-index: 10; width: 100vw; height: 100vh; background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); color: #1f2937; display: flex; flex-direction: column; overflow-y: auto; }
+              .m_h { background: linear-gradient(90deg, #0f172a, #1e293b); color: #fff; padding: 22px 40px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+              .m_c { display: flex; flex: 1; padding: 40px; gap: 40px; max-width: 1300px; margin: 0 auto; width: 100%; }
+              .m_m { flex: 2; }
+              .m_s { flex: 1; display: flex; flex-direction: column; gap: 20px; }
+              .v_p { width: 100%; height: 350px; background: linear-gradient(135deg, #0f172a, #1e293b); border-radius: 16px; display: flex; flex-direction: column; justify-content: center; align-items: center; color: #fff; box-shadow: 0 15px 35px rgba(0,0,0,0.2); border: 1px solid rgba(0,240,255,0.2); transition: transform 0.3s ease; }
+              .v_p:hover { transform: translateY(-3px); }
+              .c_w { background: #ffffff; border: 2px solid #cbd5e1; border-radius: 20px; padding: 24px; box-shadow: 0 15px 35px rgba(0,0,0,0.08); }
+              .c_s { background: #0b101f; color: #38bdf8; font-family: 'Orbitron', monospace; font-size: 1.8rem; text-align: right; padding: 18px; border-radius: 12px; margin-bottom: 18px; letter-spacing: 2px; min-height: 65px; word-break: break-all; border: 1px solid rgba(0,240,255,0.3); box-shadow: inset 0 2px 8px rgba(0,0,0,0.5); }
+              .c_g { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+              .c_b { background: #f1f5f9; border: none; padding: 16px; font-size: 1.1rem; font-weight: 600; border-radius: 10px; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+              .c_b:hover { background: #e2e8f0; transform: translateY(-2px); }
+              .c_b:active { transform: scale(0.95); }
+              .c_b.o { background: #e0f2fe; color: #0284c7; }
+              .c_b.a { background: #ffe4e6; color: #e11d48; }
+              .c_b.e { background: linear-gradient(135deg, #0ea5e9, #2563eb); color: white; grid-column: span 2; box-shadow: 0 4px 15px rgba(14,165,233,0.4); }
+              
+              /* Modal Step 2 */
+              #_s2Modal { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(5, 7, 14, 0.95); backdrop-filter: blur(10px); z-index: 100; display: none; flex-direction: column; justify-content: center; align-items: center; color: #fff; padding: 20px; text-align: center; }
+              .s2_box { background: #0b101f; border: 2px solid var(--a1); border-radius: 20px; padding: 30px; max-width: 450px; width: 100%; box-shadow: 0 0 30px rgba(0,240,255,0.3); }
+
+              /* Modal Step 3 (Key-fade Lockdown) */
+              #_s3Modal { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.98); backdrop-filter: blur(15px); z-index: 110; display: none; flex-direction: column; justify-content: center; align-items: center; color: #fff; padding: 20px; text-align: center; }
+              .s3_container { position: relative; max-width: 450px; width: 100%; display: flex; flex-direction: column; align-items: center; }
+              .s3_box { background: #050505; border: 2px solid #ff0000; border-radius: 20px; padding: 30px; width: 100%; box-shadow: 0 0 40px rgba(255,0,0,0.5); transition: opacity 0.5s ease, transform 0.5s ease; z-index: 2; }
+              .s3_box.fade-out { opacity: 0; transform: scale(0.9); pointer-events: none; }
+              .s3_door { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #111, #222); border: 2px dashed #ff0000; border-radius: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; cursor: pointer; opacity: 0; pointer-events: none; transition: opacity 0.5s ease; z-index: 1; }
+              .s3_door.visible { opacity: 1; pointer-events: auto; }
+              .s3_key_fade { opacity: 0 !important; transform: scale(0) !important; pointer-events: none !important; transition: all 0.4s ease !important; }
+
+              /* Pre-Proxy Modal */
+              #_preProxyModal { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(5, 7, 14, 0.98); z-index: 120; display: none; flex-direction: column; justify-content: center; align-items: center; color: #fff; text-align: center; }
+
+              /* Unlocked Proxy Dashboard Mode */
+              #_pD { position: relative; z-index: 10; display: none; width: 100vw; height: 100vh; flex-direction: row; }
+              sidebar { width: 360px; background-color: rgba(11, 16, 31, 0.92); backdrop-filter: blur(16px); border-right: 2px solid var(--a1); display: flex; flex-direction: column; height: 100%; box-shadow: 8px 0 30px rgba(0, 240, 255, 0.15); }
+              .s_h { padding: 22px; background: linear-gradient(90deg, rgba(0,240,255,0.15), rgba(255,0,127,0.15)); border-bottom: 1px solid var(--bd); display: flex; justify-content: space-between; align-items: center; }
+              .s_h h2 { font-family: 'Orbitron', sans-serif; font-size: 1.15rem; letter-spacing: 1.5px; background: linear-gradient(45deg, var(--a1), var(--a2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 0 20px rgba(0,240,255,0.4); }
+              .r_b { background: rgba(255,255,255,0.08); border: 1px solid var(--a1); color: var(--a1); padding: 8px 14px; border-radius: 8px; font-size: 0.75rem; cursor: pointer; font-weight: 600; transition: all 0.25s ease; box-shadow: 0 0 10px rgba(0,240,255,0.1); }
+              .r_b:hover { background: var(--a1); color: #000; box-shadow: 0 0 20px var(--a1); transform: translateY(-1px); }
+              .s_l { overflow-y: auto; flex: 1; padding: 14px; scrollbar-width: thin; scrollbar-color: var(--a1) var(--b2); }
+              .s_l::-webkit-scrollbar { width: 6px; }
+              .s_l::-webkit-scrollbar-thumb { background: var(--a1); border-radius: 3px; }
+              .c_t { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--a2); padding: 14px 8px 6px 8px; margin-top: 10px; font-weight: 700; text-shadow: 0 0 10px rgba(255,0,127,0.3); }
+              .s_btn { display: flex; flex-direction: column; width: 100%; padding: 12px 16px; margin-bottom: 6px; background: var(--c1); border: 1px solid var(--bd); border-radius: 10px; color: var(--t1); text-align: left; cursor: pointer; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); }
+              .s_btn:hover { border-color: var(--a1); transform: translateX(6px); background: rgba(0, 240, 255, 0.08); box-shadow: 0 0 15px rgba(0,240,255,0.15); }
+              .s_btn.act { border-color: var(--a1); background: linear-gradient(135deg, rgba(0,240,255,0.25), rgba(255,0,127,0.15)); box-shadow: 0 0 20px rgba(0, 240, 255, 0.3); }
+              .s_n { font-family: 'Orbitron', sans-serif; font-size: 0.85rem; font-weight: 600; color: var(--a1); letter-spacing: 0.5px; }
+              .s_c { font-size: 0.75rem; color: var(--t2); margin-top: 3px; }
+              
+              main { flex: 1; display: flex; flex-direction: column; height: 100%; background: #000; }
+              main:fullscreen { width: 100vw; height: 100vh; background: #000; }
+              main:fullscreen .t_b { display: none; }
+
+              .t_b { height: 60px; background-color: var(--b2); border-bottom: 1px solid var(--bd); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+              .t_t { font-family: 'Orbitron', sans-serif; font-size: 0.95rem; color: var(--a1); text-shadow: 0 0 10px rgba(0,240,255,0.4); }
+              .v_c { flex: 1; position: relative; background: #0a0e1a; }
+              iframe { width: 100%; height: 100%; border: none; }
+              .f_n { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none; flex-direction: column; justify-content: center; align-items: center; background: rgba(5, 7, 14, 0.96); color: var(--t2); text-align: center; padding: 35px; }
+              .f_n a { color: var(--a1); margin-top: 18px; font-weight: 600; text-decoration: none; border: 1px solid var(--a1); padding: 10px 20px; border-radius: 8px; transition: all 0.25s ease; box-shadow: 0 0 15px rgba(0,240,255,0.2); }
+              .f_n a:hover { background: var(--a1); color: #000; box-shadow: 0 0 25px var(--a1); }
+          </style>
+      </head>
+      <body>
+          <canvas class="b_c" id="_cvs"></canvas>
+
+          <!-- Modal Step 2 -->
+          <div id="_s2Modal">
+              <div class="s2_box">
+                  <h3 style="font-family:'Orbitron'; color:var(--a1); margin-bottom:12px;">🎉 Secret Uncovered!</h3>
+                  <p id="_rngMsg" style="color:var(--t2); margin-bottom:20px; font-size: 0.95rem;"></p>
+                  <p style="color:#fff; margin-bottom:12px; font-weight:600;">You know ball, calcsolver?</p>
+                  <div class="c_s" id="_s2S" style="background:#05070e;">0</div>
+                  <div class="c_g">
+                      <button class="c_b a" onclick="window._s2_cl()">C</button>
+                      <button class="c_b o" onclick="window._s2_ap('(')">(</button>
+                      <button class="c_b o" onclick="window._s2_ap(')')">)</button>
+                      <button class="c_b o" onclick="window._s2_ap('/')">÷</button>
+                      <button class="c_b" onclick="window._s2_ap('7')">7</button>
+                      <button class="c_b" onclick="window._s2_ap('8')">8</button>
+                      <button class="c_b" onclick="window._s2_ap('9')">9</button>
+                      <button class="c_b o" onclick="window._s2_ap('*')">×</button>
+                      <button class="c_b" onclick="window._s2_ap('4')">4</button>
+                      <button class="c_b" onclick="window._s2_ap('5')">5</button>
+                      <button class="c_b" onclick="window._s2_ap('6')">6</button>
+                      <button class="c_b o" onclick="window._s2_ap('-')">-</button>
+                      <button class="c_b" onclick="window._s2_ap('1')">1</button>
+                      <button class="c_b" onclick="window._s2_ap('2')">2</button>
+                      <button class="c_b" onclick="window._s2_ap('3')">3</button>
+                      <button class="c_b o" onclick="window._s2_ap('+')">+</button>
+                      <button class="c_b" onclick="window._s2_ap('0')">0</button>
+                      <button class="c_b" onclick="window._s2_ap('.')">.</button>
+                      <button class="c_b e" onclick="window._s2_ev()">=</button>
+                  </div>
+                  <p id="_s2Feedback" style="margin-top:15px; font-size:0.9rem; color:var(--a2);"></p>
+              </div>
+          </div>
+
+          <!-- Modal Step 3 (Key Dissolve) -->
+          <div id="_s3Modal">
+              <div class="s3_container">
+                  <div class="s3_box" id="_s3Box">
+                      <h3 style="font-family:'Orbitron'; color:#ff0000; margin-bottom:8px;">Final Step</h3>
+                      <p style="color:#ff0000; margin-bottom:15px; font-size: 0.85rem; font-weight: bold;">Security clearance lockdown active</p>
+                      <div class="c_s" id="_s3S" style="background:#111; color:#ff0000; border-color:#ff0000;">0</div>
+                      <div class="c_g" id="_s3Grid">
+                          <button class="c_b a s3_key" style="background:#220000; color:#ff5555;" onclick="window._s3_clickKey(this)">C</button>
+                          <button class="c_b o s3_key" style="background:#1a0505; color:#ff7777;" onclick="window._s3_clickKey(this)">(</button>
+                          <button class="c_b o s3_key" style="background:#1a0505; color:#ff7777;" onclick="window._s3_clickKey(this)">)</button>
+                          <button class="c_b o s3_key" style="background:#1a0505; color:#ff7777;" onclick="window._s3_clickKey(this)">÷</button>
+                          <button class="c_b s3_key" style="background:#111; color:#ff0000;" onclick="window._s3_clickKey(this)">7</button>
+                          <button class="c_b s3_key" style="background:#111; color:#ff0000;" onclick="window._s3_clickKey(this)">8</button>
+                          <button class="c_b s3_key" style="background:#111; color:#ff0000;" onclick="window._s3_clickKey(this)">9</button>
+                          <button class="c_b o s3_key" style="background:#1a0505; color:#ff7777;" onclick="window._s3_clickKey(this)">×</button>
+                          <button class="c_b s3_key" style="background:#111; color:#ff0000;" onclick="window._s3_clickKey(this)">4</button>
+                          <button class="c_b s3_key" style="background:#111; color:#ff0000;" onclick="window._s3_clickKey(this)">5</button>
+                          <button class="c_b s3_key" style="background:#111; color:#ff0000;" onclick="window._s3_clickKey(this)">6</button>
+                          <button class="c_b o s3_key" style="background:#1a0505; color:#ff7777;" onclick="window._s3_clickKey(this)">-</button>
+                          <button class="c_b s3_key" style="background:#111; color:#ff0000;" onclick="window._s3_clickKey(this)">1</button>
+                          <button class="c_b s3_key" style="background:#111; color:#ff0000;" onclick="window._s3_clickKey(this)">2</button>
+                          <button class="c_b s3_key" style="background:#111; color:#ff0000;" onclick="window._s3_clickKey(this)">3</button>
+                          <button class="c_b o s3_key" style="background:#1a0505; color:#ff7777;" onclick="window._s3_clickKey(this)">+</button>
+                          <button class="c_b s3_key" style="background:#111; color:#ff0000;" onclick="window._s3_clickKey(this)">0</button>
+                          <button class="c_b s3_key" style="background:#111; color:#ff0000;" onclick="window._s3_clickKey(this)">.</button>
+                          <button class="c_b e s3_key" style="background:linear-gradient(135deg, #990000, #ff0000); color:white;" onclick="window._s3_clickKey(this)">=</button>
+                      </div>
+                      <p id="_s3Feedback" style="margin-top:15px; font-size:0.9rem; color:#ff0000; font-weight:bold;"></p>
+                  </div>
+                  <div class="s3_door" id="_s3Door" onclick="window._s3_openDoor()">
+                      <h2 style="font-family:'Orbitron'; color:#ff0000; margin-bottom:10px;">👀 🚪 👀</h2>
+                      <p id="_s3TransitionText" style="color:#ff0000; font-weight:600; font-size:1.1rem;"></p>
+                      <p style="color:#888; font-size:0.8rem; margin-top:5px;">Click to proceed</p>
+                  </div>
+              </div>
+          </div>
+
+          <!-- Pre-Proxy Confirmation Modal -->
+          <div id="_preProxyModal">
+              <div style="background:#0b101f; border:2px solid var(--a1); border-radius:20px; padding:40px; max-width:400px; width:100%; box-shadow:0 0 30px rgba(0,240,255,0.3); text-align:center;">
+                  <h3 style="font-family:'Orbitron'; color:var(--a1); margin-bottom:20px;">Almost There</h3>
+                  <p style="color:var(--t2); margin-bottom:25px; font-size:0.95rem;">Click the button below to initialize system deployment.</p>
+                  <button onclick="window._proceedToProxy()" style="background:linear-gradient(135deg, var(--a1), var(--a2)); color:#000; border:none; padding:15px 30px; font-size:1.1rem; font-weight:800; border-radius:12px; cursor:pointer; box-shadow:0 0 20px rgba(0,240,255,0.4); font-family:'Orbitron';">67</button>
+              </div>
+          </div>
+
+          <!-- Decoy Container -->
+          <div id="_mP">
+              <header class="m_h">
+                  <h1>MathPath Tutoring — Calculus &amp; Advanced Analysis</h1>
+                  <span style="font-size: 0.9rem; opacity: 0.85; font-weight: 500;">Student Portal v5.0 Enhanced</span>
+              </header>
+              <div class="m_c">
+                  <div class="m_m">
+                      <div class="v_p">
+                          <h3>📹 Lecture 12: Limits &amp; Derivative Proofs</h3>
+                          <p style="color: var(--t2); font-size: 0.9rem; margin-top: 8px;">Watch the concept overview before attempting the problem set.</p>
+                      </div>
+                      <div style="margin-top: 30px;">
+                          <h2 style="margin-bottom: 12px; color: #0f172a; font-family: 'Orbitron', sans-serif; font-size: 1.2rem;">Curriculum Overview</h2>
+                          <p style="color: #475569; line-height: 1.7;">Welcome to MathPath. Our adaptive curriculum covers everything from arithmetic foundations to single-variable calculus, differential equations, and linear algebra. Use the calculation tools on the right to verify your analytical solutions.</p>
+                      </div>
+                  </div>
+                  <div class="m_s">
+                      <div class="c_w">
+                          <h4 style="margin-bottom: 14px; color: #1e293b; font-size: 1rem; font-family: 'Orbitron', sans-serif;">Scientific Calculator</h4>
+                          <div class="c_s" id="_cS">0</div>
+                          <div class="c_g">
+                              <button class="c_b a" onclick="window._0x_cl()">C</button>
+                              <button class="c_b o" onclick="window._0x_ap('(')">(</button>
+                              <button class="c_b o" onclick="window._0x_ap(')')">)</button>
+                              <button class="c_b o" onclick="window._0x_ap('/')">÷</button>
+                              <button class="c_b" onclick="window._0x_ap('7')">7</button>
+                              <button class="c_b" onclick="window._0x_ap('8')">8</button>
+                              <button class="c_b" onclick="window._0x_ap('9')">9</button>
+                              <button class="c_b o" onclick="window._0x_ap('*')">×</button>
+                              <button class="c_b" onclick="window._0x_ap('4')">4</button>
+                              <button class="c_b" onclick="window._0x_ap('5')">5</button>
+                              <button class="c_b" onclick="window._0x_ap('6')">6</button>
+                              <button class="c_b o" onclick="window._0x_ap('-')">-</button>
+                              <button class="c_b" onclick="window._0x_ap('1')">1</button>
+                              <button class="c_b" onclick="window._0x_ap('2')">2</button>
+                              <button class="c_b" onclick="window._0x_ap('3')">3</button>
+                              <button class="c_b o" onclick="window._0x_ap('+')">+</button>
+                              <button class="c_b" onclick="window._0x_ap('0')">0</button>
+                              <button class="c_b" onclick="window._0x_ap('.')">.</button>
+                              <button class="c_b e" onclick="window._0x_ev()">=</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <!-- Unlocked Proxy Dashboard -->
+          <div id="_pD">
+              <sidebar>
+                  <div class="s_h">
+                      <h2>SKIBIDI RIZZ</h2>
+                      <button class="r_b" onclick="window._0x_sM()">🔒 Lock / Math</button>
+                  </div>
+                  <div class="s_l" id="_sL"></div>
+              </sidebar>
+              <main id="_mn">
+                  <div class="t_b">
+                      <span class="t_t" id="_aL">Active Node: None</span>
+                      <div style="display: flex; gap: 10px;">
+                          <button class="r_b" id="_fsBtn" onclick="window._0x_tF()">⛶ Fullscreen</button>
+                      </div>
+                  </div>
+                  <div class="v_c">
+                      <iframe id="_sF" sandbox="allow-scripts allow-same-origin allow-forms allow-popups" allow="pointer-lock; fullscreen"></iframe>
+                      <div id="_fN" class="f_n">
+                          <p>⚠️ Direct embedding restricted by target server headers.</p>
+                          <a id="_eL" href="#" target="_blank">Launch in Secure External Tab ↗</a>
+                      </div>
+                  </div>
+              </main>
+          </div>
+
+          <script>
+              (function(_0xd, _0xw) {
+                  // Step 1: Main Calculator Passcode Check
+                  let _0xc = "0"; 
+                  const _0xs = _0xd.getElementById('_cS');
+                  const _0xu = () => { _0xs.innerText = _0xc; };
+                  
+                  _0xw._0x_ap = (v) => { _0xc = (_0xc === "0" && v !== '.') ? v : _0xc + v; _0xu(); };
+                  _0xw._0x_cl = () => { _0xc = "0"; _0xu(); };
+                  _0xw._0x_ev = () => {
+                      if (_0xc.trim() === String(0x1a71)) { // Passcode: 6769
+                          _0xd.getElementById('_mP').style.display = 'none';
+                          triggerStep2();
+                          _0xw._0x_cl(); 
+                          return;
+                      }
+                      try {
+                          let _0x_s = _0xc.replace(/\u00D7/g, '*').replace(/\u00F7/g, '/');
+                          _0xc = String(Function('"use strict";return (' + _0x_s + ')')());
+                      } catch (e) { _0xc = "Error"; }
+                      _0xu(); 
+                      setTimeout(() => { if(_0xc === "Error") _0xw._0x_cl(); }, 1500);
+                  };
+
+                  // Step 2: Random Funny Message Calc
+                  let _0xc2 = "0"; 
+                  const _0xs2 = _0xd.getElementById('_s2S');
+                  const funnyMsgs = [
+                      "Bro really thought the first calc was the end of the boss fight 💀",
+                      "Achievement unlocked: Professional Button Masher 🏆",
+                      "You bypassed the matrix, but can you handle level 2? 🕶️",
+                      "FBI is frantically typing notes right now 🚨"
+                  ];
+
+                  function triggerStep2() {
+                      const randMsg = funnyMsgs[Math.floor(Math.random() * funnyMsgs.length)];
+                      _0xd.getElementById('_rngMsg').innerText = randMsg;
+                      _0xd.getElementById('_s2Modal').style.display = 'flex';
+                      _0xc2 = "0"; 
+                      _0xs2.innerText = _0xc2;
+                      _0xd.getElementById('_s2Feedback').innerText = "";
+                  }
+
+                  _0xw._s2_ap = (v) => { _0xc2 = (_0xc2 === "0" && v !== '.') ? v : _0xc2 + v; _0xs2.innerText = _0xc2; };
+                  _0xw._s2_cl = () => { _0xc2 = "0"; _0xs2.innerText = _0xc2; };
+                  _0xw._s2_ev = () => {
+                      if (_0xc2.trim() === "0000" || _0xc2.trim() === "0") {
+                          _0xd.getElementById('_s2Feedback').innerText = "Access granted. Moving to final step...";
+                          setTimeout(() => {
+                              _0xd.getElementById('_s2Modal').style.display = 'none';
+                              triggerStep3();
+                          }, 1200);
+                      } else {
+                          _0xd.getElementById('_s2Feedback').innerText = "Access Denied.";
+                          setTimeout(() => {
+                              _0xd.getElementById('_s2Modal').style.display = 'none';
+                              _0xd.getElementById('_mP').style.display = 'flex';
+                              _0xw._0x_cl();
+                          }, 1200);
+                      }
+                  };
+
+                  // Step 3: Dissolving Buttons Lockdown
+                  function triggerStep3() {
+                      _0xd.getElementById('_s3Modal').style.display = 'flex';
+                      _0xd.getElementById('_s3Box').classList.remove('fade-out');
+                      _0xd.getElementById('_s3Door').classList.remove('visible');
+                      _0xd.querySelectorAll('.s3_key').forEach(k => k.classList.remove('s3_key_fade'));
+                      _0xd.getElementById('_s3Feedback').innerText = "";
+                  }
+                  
+                  _0xw._s3_clickKey = (btn) => {
+                      if (!btn.classList.contains('s3_key_fade')) {
+                          btn.classList.add('s3_key_fade');
+                          const remainingKeys = _0xd.querySelectorAll('.s3_key:not(.s3_key_fade)');
+                          if (remainingKeys.length === 0) {
+                              _0xd.getElementById('_s3Box').classList.add('fade-out');
+                              setTimeout(() => {
+                                  const doorElem = _0xd.getElementById('_s3Door');
+                                  doorElem.classList.add('visible');
+                                  startSlowTransition();
+                              }, 500);
+                          }
+                      }
+                  };
+
+                  function startSlowTransition() {
+                      const textElem = _0xd.getElementById('_s3TransitionText');
+                      let states = [".", "..", "..."];
+                      let index = 0;
+                      textElem.innerText = states[index];
+                      window._transitionInterval = setInterval(() => {
+                          index = (index + 1) % states.length;
+                          textElem.innerText = states[index];
+                      }, 1000);
+                  }
+
+                  _0xw._s3_openDoor = () => {
+                      if (window._transitionInterval) clearInterval(window._transitionInterval);
+                      _0xd.getElementById('_s3Modal').style.display = 'none';
+                      _0xd.getElementById('_preProxyModal').style.display = 'flex';
+                  };
+
+                  _0xw._proceedToProxy = () => {
+                      _0xd.getElementById('_preProxyModal').style.display = 'none';
+                      _0xd.getElementById('_pD').style.display = 'flex';
+                  };
+
+                  _0xw._0x_sM = () => {
+                      _0xd.getElementById('_pD').style.display = 'none';
+                      _0xd.getElementById('_mP').style.display = 'flex';
+                      if (_0xd.fullscreenElement) _0xd.exitFullscreen().catch(()=>{});
+                  };
+
+                  _0xw._0x_tF = () => {
+                      const _0xm = _0xd.getElementById('_mn');
+                      if (!_0xd.fullscreenElement) _0xm.requestFullscreen().catch(()=>{});
+                      else _0xd.exitFullscreen().catch(()=>{});
+                  };
+
+                  _0xd.addEventListener('fullscreenchange', () => {
+                      _0xd.getElementById('_fsBtn').innerText = _0xd.fullscreenElement ? "⛶ Exit Fullscreen" : "⛶ Fullscreen";
+                  });
+
+                  // Proxy Node Catalog
+                  const _0x_pList = [
+                      { cat: "Proxies & Search", links: [
+                          { name: "DogeUnblocker", url: "https://dogeunblocker.com" },
+                          { name: "Rammerhead", url: "https://rammerhead.org" },
+                          { name: "Ultraviolet Node", url: "https://uv.studentportal.site" },
+                          { name: "Interstellar", url: "https://interstellar.app" },
+                          { name: "Titan Network", url: "https://titan.network" }
+                      ]},
+                      { cat: "Gaming Unblocked", links: [
+                          { name: "GForce Now", url: "https://play.geforcenow.com" },
+                          { name: "Now.gg Mobile", url: "https://now.gg" },
+                          { name: "Slope Game", url: "https://slopegame.com" },
+                          { name: "1v1.LOL", url: "https://1v1.lol" },
+                          { name: "Retro Bowl", url: "https://retrobowl.me" }
+                      ]},
+                      { cat: "Social & Tools", links: [
+                          { name: "Discord Web", url: "https://discord.com/app" },
+                          { name: "Reddit Free", url: "https://reddit.com" },
+                          { name: "YouTube Direct", url: "https://youtube.com" },
+                          { name: "Twitch TV", url: "https://twitch.tv" }
+                      ]}
+                  ];
+
+                  const _0x_sL = _0xd.getElementById('_sL');
+                  const _0x_sF = _0xd.getElementById('_sF');
+                  const _0x_aL = _0xd.getElementById('_aL');
+                  const _0x_fN = _0xd.getElementById('_fN');
+                  const _0x_eL = _0xd.getElementById('_eL');
+
+                  _0x_pList.forEach(group => {
+                      const catHeader = _0xd.createElement('div');
+                      catHeader.className = 'c_t';
+                      catHeader.innerText = group.cat;
+                      _0x_sL.appendChild(catHeader);
+
+                      group.links.forEach(item => {
+                          const btn = _0xd.createElement('button');
+                          btn.className = 's_btn';
+                          btn.innerHTML = `<span class="s_n">${item.name}</span><span class="s_c">${item.url}</span>`;
+                          btn.onclick = () => {
+                              _0xd.querySelectorAll('.s_btn').forEach(b => b.classList.remove('act'));
+                              btn.classList.add('act');
+                              _0x_aL.innerText = `Active Node: ${item.name}`;
+                              _0x_fN.style.display = 'none';
+                              _0x_sF.style.display = 'block';
+                              _0x_sF.src = item.url;
+                              _0x_eL.href = item.url;
+
+                              // Handle x-frame options restriction fallback
+                              let checkTimer = setTimeout(() => {
+                                  try {
+                                      if (!_0x_sF.contentWindow.length) {
+                                          // Might be blocked
+                                      }
+                                  } catch(e) {
+                                      // Domain cross-origin restriction standard
+                                  }
+                              }, 2500);
+                          };
+                          _0x_sL.appendChild(btn);
+                      });
+                  });
+
+                  // Background Matrix Animation
+                  const canvas = _0xd.getElementById('_cvs');
+                  const ctx = canvas.getContext('2d');
+                  let width = canvas.width = window.innerWidth;
+                  let height = canvas.height = window.innerHeight;
+
+                  window.addEventListener('resize', () => {
+                      width = canvas.width = window.innerWidth;
+                      height = canvas.height = window.innerHeight;
+                  });
+
+                  const cols = Math.floor(width / 20) + 1;
+                  const ypos = Array(cols).fill(0);
+
+                  function matrix() {
+                      ctx.fillStyle = 'rgba(5, 7, 14, 0.05)';
+                      ctx.fillRect(0, 0, width, height);
+                      ctx.fillStyle = '#00f0ff';
+                      ctx.font = '15pt monospace';
+
+                      ypos.forEach((y, index) => {
+                          const text = String.fromCharCode(Math.floor(Math.random() * 128));
+                          const x = index * 20;
+                          ctx.fillText(text, x, y);
+                          if (y > 100 + Math.random() * 10000) ypos[index] = 0;
+                          else ypos[index] = y + 20;
+                      });
+                  }
+                  setInterval(matrix, 50);
+
+              })(document, window);
+          </script>
+      </body>
+      </html>
+      ]]>
+    </xhtml:div>
+  </foreignObject>
+</svg>
